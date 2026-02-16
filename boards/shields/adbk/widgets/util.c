@@ -11,34 +11,10 @@
 LV_IMAGE_DECLARE(bolt);
 
 void rotate_canvas(lv_obj_t *canvas, lv_color_t cbuf[]) {
-    static lv_color_t cbuf_tmp[CANVAS_SIZE * CANVAS_SIZE];
-    memcpy(cbuf_tmp, cbuf, sizeof(cbuf_tmp));
-
-    lv_image_dsc_t img;
-    img.header.magic = LV_IMAGE_HEADER_MAGIC;
-    img.header.cf = LV_COLOR_FORMAT_NATIVE;
-    img.header.w = CANVAS_SIZE;
-    img.header.h = CANVAS_SIZE;
-    img.header.stride = CANVAS_SIZE * sizeof(lv_color_t);
-    img.data_size = sizeof(cbuf_tmp);
-    img.data = (const uint8_t *)cbuf_tmp;
-
-    lv_canvas_fill_bg(canvas, LVGL_BACKGROUND, LV_OPA_COVER);
-
-    lv_layer_t layer;
-    lv_canvas_init_layer(canvas, &layer);
-
-    lv_draw_image_dsc_t img_dsc;
-    lv_draw_image_dsc_init(&img_dsc);
-    img_dsc.src = &img;
-    img_dsc.rotation = 1800; /* 180 degrees in 0.1 degree units */
-    img_dsc.pivot.x = CANVAS_SIZE / 2;
-    img_dsc.pivot.y = CANVAS_SIZE / 2;
-
-    lv_area_t area = {0, 0, CANVAS_SIZE - 1, CANVAS_SIZE - 1};
-    lv_draw_image(&layer, &img_dsc, &area);
-
-    lv_canvas_finish_layer(canvas, &layer);
+    /* Rotation disabled for debugging - content will appear upside down */
+    /* TODO: Re-enable rotation once basic display works */
+    (void)canvas;
+    (void)cbuf;
 }
 
 void draw_battery(lv_obj_t *canvas, lv_layer_t *layer, const struct status_state *state) {
