@@ -7,7 +7,7 @@
 #
 ---
 include:
-  - board: seeeduino_xiao_ble
+  - board: xiao_ble
     shield: adbk
     artifact-name: adbk_fw
 
