@@ -6,6 +6,7 @@
  */
 
 #include <zephyr/kernel.h>
+#include <lvgl.h>
 #include "util.h"
 
 LV_IMG_DECLARE(bolt);
@@ -17,7 +18,7 @@ void rotate_canvas(lv_obj_t *canvas) {
 
     const uint32_t stride = lv_draw_buf_width_to_stride(CANVAS_SIZE, CANVAS_COLOR_FORMAT);
     lv_draw_sw_rotate(buf_copy, buf, CANVAS_SIZE, CANVAS_SIZE, stride, stride,
-                      LV_DISPLAY_ROTATION_270, CANVAS_COLOR_FORMAT);
+                      LV_DISPLAY_ROTATION_180, CANVAS_COLOR_FORMAT);
 }
 
 void draw_battery(lv_obj_t *canvas, const struct status_state *state) {
