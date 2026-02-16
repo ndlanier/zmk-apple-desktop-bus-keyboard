@@ -3,7 +3,7 @@
 #include <dt-bindings/zmk/bt.h>
 
 #define DEFAULT     0
-#define CAPS        1
+#define CAPS_LYR    1
 #define FUNCTION    2
 
 &digital_crown {
